@@ -9,8 +9,7 @@ namespace OpenWeather
     {
         static void Main(string[] args)
         {
-            var url = $"https://api.openweathermap.org/data/2.5/weather?q=Kazan&appid=ca20dda9ed2f83ce0cc363b556bbcf42";
-
+            var url = $"https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=ca20dda9ed2f83ce0cc363b556bbcf42";
             var request = WebRequest.Create(url);
 
             var response = request.GetResponse();
@@ -27,7 +26,7 @@ namespace OpenWeather
                 string result = streamReader.ReadToEnd();
                 Console.WriteLine(result);
                 var geodata = JsonConvert.DeserializeObject<Root>(result);
-                Console.WriteLine(geodata.geodata_center.type);
+                Console.WriteLine(geodata.geoData.coordinates);
             }
         }
     }
