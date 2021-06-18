@@ -9,7 +9,8 @@ namespace OpenWeather
     {
         static void Main(string[] args)
         {
-            var url = $"https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=ca20dda9ed2f83ce0cc363b556bbcf42";
+            var ApiKey = "d6c0b34a7864b26a7d1907af5d07d288";
+            var url = $"https://apidata.mos.ru/v1/datasets/531/rows?api_key={ApiKey}";
             var request = WebRequest.Create(url);
 
             var response = request.GetResponse();
@@ -25,8 +26,6 @@ namespace OpenWeather
             {
                 string result = streamReader.ReadToEnd();
                 Console.WriteLine(result);
-                var geodata = JsonConvert.DeserializeObject<Root>(result);
-                Console.WriteLine(geodata.geoData.coordinates);
             }
         }
     }
